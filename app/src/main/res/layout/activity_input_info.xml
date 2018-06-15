@@ -39,7 +39,7 @@
         tools:layout_editor_absoluteX="147dp"
         tools:layout_editor_absoluteY="178dp" />
 
-    <TextView
+    <EditText
         android:id="@+id/memo_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

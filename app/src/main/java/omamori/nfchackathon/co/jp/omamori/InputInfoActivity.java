@@ -69,12 +69,12 @@ public class InputInfoActivity extends AppCompatActivity  implements LocationLis
             public void onClick(View view) {
 
                 // メール送信
-                // Uri.Builder builder = new Uri.Builder();
-                // String subject = String.format(Mail.SUBJECT_TEMP, "母さん");
-                // String content = String.format(Mail.CONTENT_TEMP, "母さん", AppUser.APP_USER_NAME, ((TextView) findViewById(R.id.time_textView)).getText(), ((TextView) findViewById(R.id.memo_textView)).getText());
+                Uri.Builder builder = new Uri.Builder();
+                String subject = String.format(Mail.SUBJECT_TEMP, "母さん");
+                String content = String.format(Mail.CONTENT_TEMP, "母さん", AppUser.APP_USER_NAME, ((TextView) findViewById(R.id.time_textView)).getText(), ((EditText) findViewById(R.id.memo_textView)).getText());
 
-                // AsyncMailSendRequest asyncTask = new AsyncMailSendRequest(subject, content);
-                // asyncTask.execute(builder);
+                AsyncMailSendRequest asyncTask = new AsyncMailSendRequest(subject, content);
+                asyncTask.execute(builder);
 
                 // 動画再生画面へ遷移
                 Intent intent = new Intent(getApplication(), MovieActivity.class);
