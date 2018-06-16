@@ -1,4 +1,4 @@
-package omamori.nfchackathon.co.jp.omamori;
+﻿package omamori.nfchackathon.co.jp.omamori;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -21,6 +21,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -71,7 +72,7 @@ public class InputInfoActivity extends AppCompatActivity  implements LocationLis
                 // メール送信
                 Uri.Builder builder = new Uri.Builder();
                 String subject = String.format(Mail.SUBJECT_TEMP, "母さん");
-                String content = String.format(Mail.CONTENT_TEMP, "母さん", AppUser.APP_USER_NAME, ((TextView) findViewById(R.id.time_textView)).getText(), ((EditText) findViewById(R.id.memo_textView)).getText());
+                String content = String.format(Mail.CONTENT_TEMP, "母さん", AppUser.APP_USER_NAME, ((TextView) findViewById(R.id.time_textView)).getText(), ((TextView) findViewById(R.id.address_textView)).getText(), ((EditText) findViewById(R.id.memo_textView)).getText());
 
                 AsyncMailSendRequest asyncTask = new AsyncMailSendRequest(subject, content);
                 asyncTask.execute(builder);
