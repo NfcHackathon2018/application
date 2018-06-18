@@ -5,6 +5,7 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.MediaController;
 import android.widget.VideoView;
 
 public class MovieActivity extends AppCompatActivity {
@@ -19,6 +20,7 @@ public class MovieActivity extends AppCompatActivity {
             // 動画再生
             final VideoView videoView = (VideoView) findViewById(R.id.movie);
             videoView.setVideoURI(Uri.parse("android.resource://" + this.getPackageName() + "/" + R.raw.samplecm));
+            videoView.setMediaController(new MediaController(this));
             videoView.start();
 
             videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener(){
