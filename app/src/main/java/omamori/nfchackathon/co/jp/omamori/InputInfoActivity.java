@@ -2,6 +2,7 @@
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -13,6 +14,8 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.Uri;
+import android.os.Handler;
+import android.os.Message;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -42,6 +45,7 @@ public class InputInfoActivity extends AppCompatActivity  implements LocationLis
     private double latitude;    // 経緯
     private double longitude;   // 緯度
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +57,7 @@ public class InputInfoActivity extends AppCompatActivity  implements LocationLis
 
         // 名前取得
         TextView nameTextView = (TextView) findViewById(R.id.name_textView);
-        nameTextView.setText(AppUser.APP_USER_NAME);
+        nameTextView.setText("海平さん");
 
         // 位置情報取得
         this.initGps();
@@ -64,6 +68,10 @@ public class InputInfoActivity extends AppCompatActivity  implements LocationLis
         TextView timeTextView = (TextView) findViewById(R.id.time_textView);
         timeTextView.setText(now);
 
+        // 内容
+        EditText memoEditText = (EditText) findViewById(R.id.memo_textView);
+        memoEditText.setText("海平さんのご自宅に伺いました。");
+
         // 登録ボタン押下イベント
         findViewById(R.id.register_button).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,8 +79,8 @@ public class InputInfoActivity extends AppCompatActivity  implements LocationLis
 
                 // メール送信
                 Uri.Builder builder = new Uri.Builder();
-                String subject = String.format(Mail.SUBJECT_TEMP, "母さん");
-                String content = String.format(Mail.CONTENT_TEMP, "母さん", AppUser.APP_USER_NAME, ((TextView) findViewById(R.id.time_textView)).getText(), ((TextView) findViewById(R.id.address_textView)).getText(), ((EditText) findViewById(R.id.memo_textView)).getText());
+                String subject = String.format(Mail.SUBJECT_TEMP, "海平おじさん");
+                String content = String.format(Mail.CONTENT_TEMP, "海平おじさん", AppUser.APP_USER_NAME, ((TextView) findViewById(R.id.time_textView)).getText(), ((TextView) findViewById(R.id.address_textView)).getText(), ((EditText) findViewById(R.id.memo_textView)).getText());
 
                 AsyncMailSendRequest asyncTask = new AsyncMailSendRequest(subject, content);
                 asyncTask.execute(builder);
@@ -88,7 +96,7 @@ public class InputInfoActivity extends AppCompatActivity  implements LocationLis
     /**
      * 位置情報取得の初期化
      */
-    private void initGps()
+    public void initGps()
     {
         // GPS使用許可権限確認
         if (PermissionChecker.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
@@ -101,7 +109,7 @@ public class InputInfoActivity extends AppCompatActivity  implements LocationLis
         if (PermissionChecker.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
             // 許可されていない場合
-            ActivityCompat.requestPermissions(InputInfoActivity.this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},1000);
+            ActivityCompat.requestPermissions(InputInfoActivity.this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 1000);
             return;
         }
 

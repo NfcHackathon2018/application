@@ -47,13 +47,12 @@ public class OmamoriUser implements Serializable {
     private void initOmamoriUserData()
     {
         userInfo = new HashMap<>();
-        userInfo.put("nfc_testuser1", "AA AAさん");
-        userInfo.put("nfc_testuser2", "BB BBさん");
-        userInfo.put("nfc_testuser3", "CC CCさん");
-        userInfo.put("nfc_testuser4", "DD DDさん");
-        userInfo.put("nfc_testuser5", "EE EEさん");
-        userInfo.put("nfc_testuser6", "FF FFさん");
-        userInfo.put("nfc_testuser7", "GG GGさん");
+        userInfo.put("nfc_testuser1", "田中 花子さん");
+        userInfo.put("nfc_testuser2", "鈴木 花子さん");
+        userInfo.put("nfc_testuser3", "佐藤 花子さん");
+        userInfo.put("nfc_testuser4", "田中 花子さん");
+        userInfo.put("nfc_testuser5", "鈴木 花子さん");
+        userInfo.put("nfc_testuser6", "佐藤 花子さん");
     }
 
 }

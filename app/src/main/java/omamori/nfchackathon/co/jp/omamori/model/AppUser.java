@@ -5,6 +5,6 @@ package omamori.nfchackathon.co.jp.omamori.model;
  */
 public class AppUser {
 
-    public static final String APP_USER_NAME = "大日本 花子";
+    public static final String APP_USER_NAME = "あなごさん";
 
 }

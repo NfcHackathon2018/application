@@ -20,7 +20,7 @@ public class Mail {
     // メール本文テンプレート
     public static final String CONTENT_TEMP =
             "＝＝＝＝＝＝＝＝＝＝＝＝＝＝\n"
-                    +"OMAMORIで%sと%sが会ったようです。\n"
+                    +"OMAMORIで %s と %s が会ったようです。\n"
                     +"【時間】%s\n"
                     +"【場所】%s\n"
                     +"【内容】%s\n"
@@ -39,8 +39,8 @@ public class Mail {
     private Properties properties;
 
     // メール設定
-    private static final String MAIL_FROM = "dis.sp3.yamagata.kajo.2014@gmail.com";     // 送信元アドレス
-    private static final String MAIL_TO = "testnfc20180525@gmail.com";                    // 送信先アドレス
+    private static final String MAIL_FROM = "testnfc20180525@gmail.com";    // 送信元アドレス
+    private static final String MAIL_TO = "nfc.hackathon2018@gmail.com";    // 送信先アドレス
     private static final String CHARSET = "UTF-8";
     private static final String ENCODING = "base64";
     private String subject; // メール件名
